@@ -1,0 +1,18 @@
+{
+   "trancadas":[
+      {
+         "nome":"Estru Dados",
+         "nota":0,
+         "carga":64,
+         "semestre":2
+      }
+   ],
+   "completas":[
+      {
+         "nome":"Fundamentos de Programação",
+         "nota":10,
+         "carga":96,
+         "semestre":1
+      }
+   ]
+}

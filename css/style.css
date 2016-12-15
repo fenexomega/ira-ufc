@@ -1,0 +1,9 @@
+@media (min-width: 768px){
+  .navbar-right{
+    margin-right: 15px;
+  }
+
+  .div-botoes > button{
+    margin-left: 16px;
+  }
+}

@@ -1,11 +1,13 @@
 {
-   "disciplinas":[
+  "semestres":[{
+    "periodo": 1,
+    "disciplinas":[
       {
-         "nome":"Fundamentos de Programação",
-         "nota":10,
-         "carga":96,
-         "semestre":1,
-         "trancada":false
+        "nome":"Fundamentos de Programação",
+        "nota":10,
+        "carga":96,
+        "trancada":false
       }
-   ]
-}
+    ]
+    }]
+  }

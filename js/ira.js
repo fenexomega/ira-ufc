@@ -25,26 +25,29 @@ function calCargaTotal(obj)
 
 function calcIra(obj)
 {
-	var A1 = 0,B1 = 0
-	var C  = calCargaTotal(obj)
-	var CT = 0
-	for(d of obj.disciplinas)
-		if(d.trancada == true)
-			CT += d.carga
-	console.log("CT = " + CT)
-	var coefTrancamento = 1.0 - (CT/(2.0*C))
-	if(coefTrancamento != coefTrancamento)
-		coefTrancamento = 0
-	console.log(coefTrancamento)
-	for(var v of obj.completas)
-		if(v.trancada == false)
-			B1 += Math.min(6,v.semestre) * v.carga
-	for(var v of obj.completas)
-		if(v.trancada == true)
-			A1 += Math.min(6,v.semestre) * v.carga * v.nota
-	if(!B1)
-		B1 = 1
+	// formula tirada de
+	// http://www.prograd.ufc.br/perguntas-frequentes/384-perguntas-frequentes-ira
+	var A1 = 0,B1 = 0;
+	var C  = calCargaTotal(obj);
+	var CT = 0;
+	var coefTrancamento = 0;
+	for(semestre of obj.semestres)
+	{
+		for(d of semestre.disciplinas)
+			if(d.trancada == true)
+				CT += d.carga;
+			else
+			{
+				B1 += Math.min(6,v.semestre) * v.carga
+				A1 += Math.min(6,v.semestre) * v.carga * v.nota
+			}
+		if(coefTrancamento != coefTrancamento)
+			coefTrancamento = 0
+		console.log(coefTrancamento)
+		if(!B1)
+			B1 = 1
+	}
+	coefTrancamento = 1.0 - (CT/(2.0*C))
+
 	return coefTrancamento*(A1/B1)
 }
-
-var x = calcIra(loadJson("modelo.json"))

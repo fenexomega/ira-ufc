@@ -1,0 +1,29 @@
+{
+  "name": "iraufc",
+  "version": "0.0.1",
+  "description": "Uma calculadora de IRA individual da UFC",
+  "main": "null",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "simplehttpserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenexomega/ira-ufc.git"
+  },
+  "keywords": [
+    "ira",
+    "ufc",
+    "universidade"
+  ],
+  "author": "Jordy Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fenexomega/ira-ufc/issues"
+  },
+  "homepage": "https://github.com/fenexomega/ira-ufc#readme",
+  "dependencies": {
+    "http-server": "^0.9.0",
+    "simplehttpserver": "0.0.6"
+  }
+}

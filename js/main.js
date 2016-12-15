@@ -1,7 +1,5 @@
 var app = angular.module("mainApp",['ngRoute']);
 
-
-
 app.config(function($routeProvider){
   $routeProvider
     .when('/',{
@@ -9,6 +7,6 @@ app.config(function($routeProvider){
       controller: 'iraController'
     })
     .otherwise({
-      redirectTo: '/home'
+      redirectTo: '/'
     });
 });

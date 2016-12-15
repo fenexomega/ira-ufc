@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -8,20 +10,23 @@
         <thead>
           <tr>
             <th>Disciplina</th>
+            <th>Semestre</th>
             <th>Créditos</th>
             <th>Nota</th>
+            <th>Trancada</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><input type="text" name="" value="" ng-model="discNome"></td>
-            <td><input type="text" name="" value="" ng-model="discCred"></td>
-            <td><input type="text" name="" value="" ng-model="discNota"></td>
+          <tr ng-repeat="x in disciplinas">
+            <td><input type="text" name="" ng-value="x.nome" ></td>
+            <td><input type="text" name="" ng-value="x.semestre" ></td>
+            <td><input type="text" name="" ng-value="x.carga" ></td>
+            <td><input type="text" name="" ng-value="x.nota" ng-disabled="$index"></td>
+            <td><input type="checkbox" name="" ng-checked="x.trancada"  ng-model="$index"></td>
+            <td><input type="hidden" name="index" value="{{$index}}"></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
-<script src="js/controllers/iraController.js" charset="utf-8"></script>

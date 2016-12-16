@@ -6,19 +6,7 @@ function iraController($scope, $http)
 {
   $scope.disciplina = {carga: 32,nota: 7.0,semestre: 1};
 
-  $scope.dados = {
-    "semestres":[{
-      "periodo": 1,
-      "disciplinas":[
-        {
-          "nome":"Fundamentos de Programação",
-          "nota":10,
-          "carga":96,
-          "trancada":false
-        }
-      ]
-      }]
-    };
+  $scope.dados = getDados();
 
 
 
@@ -28,16 +16,36 @@ function iraController($scope, $http)
       $scope.ira = calcIra($scope.dados);
 
       // Caso não tenha sincronizado ainda, limpe o timeout
-      if(timeoutRef != undefined)
+      if(typeof timeoutRef !== 'undefined')
         clearTimeout(timeoutRef);
       timeoutRef = setTimeout(sincronizarDados,3000);
       console.log("mudou o dado");
     },true);
 
 
+    function getDados()
+    {
+      if(localStorage.dados != undefined)
+        return JSON.parse(localStorage.dados);
+      return {
+        "semestres":[{
+          "periodo": 1,
+          "disciplinas":[
+            {
+              "nome":"Fundamentos de Programação",
+              "nota":10,
+              "carga":96,
+              "trancada":false
+            }
+          ]
+          }]
+        };
+    }
+
     function sincronizarDados()
     {
       var parametro = JSON.stringify($scope.dados);
+      localStorage.dados = parametro;
       $http.post(URL,parametro)
       .success(function(data,status,headers,config){
 

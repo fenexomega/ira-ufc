@@ -109,6 +109,7 @@ function iraController($scope, $http)
       {
         if(periodo !== undefined && semestre.periodo > periodo)
         {
+          console.log("DEU BREAK. periodo = " + periodo + " total = " + total);
           break;
         }
         for(d of semestre.disciplinas)
@@ -125,13 +126,15 @@ function iraController($scope, $http)
   	// formula tirada de
   	// http://www.prograd.ufc.br/perguntas-frequentes/384-perguntas-frequentes-ira
   	var A1 = 0,B1 = 0;
-  	var C  = calCargaTotal(obj); //carga total
+  	var C  = 0;
   	var CT = 0; //carga das trancadas
   	var coefTrancamento = 1;
-  	for(semestre of obj.semestres)
+  	for(var semestre of obj.semestres)
   	{
-  		for(d of semestre.disciplinas)
+      C  = calCargaTotal(obj,semestre.periodo); //carga total
+  		for(var d of semestre.disciplinas)
       {
+
         if(d.trancada == true)
         {
           CT += d.carga;

@@ -30,6 +30,7 @@ function iraController($scope, $http)
       return {
         "semestres":[{
           "periodo": 1,
+          "media": 10,
           "disciplinas":[
             {
               "nome":"Fundamentos de Programação",
@@ -118,21 +119,30 @@ function iraController($scope, $http)
   	var A1 = 0,B1 = 0;
   	var C  = calCargaTotal(obj);
   	var CT = 0;
-  	var coefTrancamento = 0;
+  	var coefTrancamento = 1;
   	for(semestre of obj.semestres)
   	{
   		for(d of semestre.disciplinas)
-  			if(d.trancada == true)
-  				CT += d.carga;
+      {
+        if(d.trancada == true)
+        {
+          CT += d.carga;
+          coefTrancamento = 1.0 - (CT/(2.0*C))
+        }
   			else
   			{
   				B1 += Math.min(6,semestre.periodo) * d.carga
   				A1 += Math.min(6,semestre.periodo) * d.carga * d.nota
   			}
+        semestre.media = coefTrancamento*(A1/B1);
+      }
+
   		// if(coefTrancamento != coefTrancamento)
   		// 	coefTrancamento = 0
+      // se B1 = 0
   		if(!B1)
   			B1 = 1
+
   	}
   	coefTrancamento = 1.0 - (CT/(2.0*C))
 

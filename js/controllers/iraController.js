@@ -4,7 +4,7 @@ var URL = "http://localhost:8080";
 
 function iraController($scope, $http)
 {
-  $scope.disciplina = {carga: 32,nota: 7.0,semestre: 1};
+  $scope.disciplina = {carga: 64,nota: 7.0,semestre: 1};
 
   $scope.dados = getDados();
 

@@ -74,7 +74,7 @@ function iraController($scope, $http)
     var semestre = acharSemestreOuCriar(disciplina.semestre);
     delete disciplina.semestre;
     semestre.disciplinas.push(disciplina);
-    $scope.disciplina = {carga: 64,nota: 7.0,semestre: 1};
+    $scope.disciplina = {carga: 64,nota: 7.0,semestre: disciplina.semestre};
     $scope.ira = calcIra($scope.dados);
 
   }

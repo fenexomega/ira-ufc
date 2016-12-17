@@ -1,7 +1,6 @@
 angular.module('mainApp').controller('iraController',['$scope', '$http', iraController]);
 var URL = "http://localhost:8080";
 
-
 function iraController($scope, $http)
 {
   $scope.disciplina = {carga: 64,nota: 7.0,semestre: 1};
@@ -30,7 +29,7 @@ function iraController($scope, $http)
       return {
         "semestres":[{
           "periodo": 1,
-          "media": 10,
+          "media": 10.0,
           "disciplinas":[
             {
               "nome":"Fundamentos de Programação",

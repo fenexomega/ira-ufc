@@ -11,6 +11,7 @@ function iraController($scope, $http)
 
     $scope.ira = calcIra($scope.dados);
 
+// Quando o modelo 'dados' mudar
     $scope.$watch('dados',function(){
       $scope.ira = calcIra($scope.dados);
 
@@ -18,7 +19,6 @@ function iraController($scope, $http)
       if(typeof timeoutRef !== 'undefined')
         clearTimeout(timeoutRef);
       timeoutRef = setTimeout(sincronizarDados,3000);
-      console.log("mudou o dado");
     },true);
 
 
@@ -75,8 +75,12 @@ function iraController($scope, $http)
     var valorSemestre = disciplina.semestre;
     delete disciplina.semestre;
     semestre.disciplinas.push(disciplina);
+    $scope.dados.semestres.sort(function(d1,d2){
+      return d1.periodo - d2.periodo;
+    });
     $scope.disciplina = {carga: disciplina.carga,nota: disciplina.nota,semestre: valorSemestre};
     $scope.ira = calcIra($scope.dados);
+
 
   }
 
@@ -85,8 +89,10 @@ function iraController($scope, $http)
     var index = semestre.disciplinas.indexOf(disciplina);
     semestre.disciplinas.splice(index,1);
     if(semestre.disciplinas.length == 0)
-      delete semestre;
-
+    {
+      index = $scope.dados.semestres.indexOf(semestre);
+      $scope.dados.semestres.splice(index,1);
+    }
   }
 
   function loadJson(name)
@@ -108,7 +114,6 @@ function iraController($scope, $http)
       {
         if(periodo !== undefined && semestre.periodo > periodo)
         {
-          console.log("DEU BREAK. periodo = " + periodo + " total = " + total);
           break;
         }
         for(d of semestre.disciplinas)
@@ -137,7 +142,6 @@ function iraController($scope, $http)
         if(d.trancada == true)
         {
           CT += d.carga;
-          console.log("Carga adicionada. Coef = " + coefTrancamento);
         }
         else
         {
@@ -148,9 +152,6 @@ function iraController($scope, $http)
       coefTrancamento = 1.0 - ((CT/2)/C);
       semestre.media = coefTrancamento*(A1/B1);
   	}
-
-    console.log("final. Coef = " + coefTrancamento);
-
 
   	return coefTrancamento*(A1/B1)
   }

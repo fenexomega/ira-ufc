@@ -17,11 +17,14 @@
       </div>
       <div class="form-group col-md-3 col-xs-6">
         <label for="nota">Nota</label>
-        <input ng-model="disciplina.nota" type="number" name="nota" step="1" class="form-control"  min="0" max="10">
+        <input ng-model="disciplina.nota" ng-disabled="disciplina.trancada" type="number" name="nota" step="1" class="form-control"  min="0" max="10">
       </div>
       <div class="checkbox col-md-3 col-xs-6">
         <label><input ng-model="disciplina.trancada" type="checkbox">Trancada</label>
       </div>
+    </div>
+    <div class="alert alert-info">
+      <b>Aviso:</b> as disciplinas que foram reprovadas por falta devem ter nota ZERO. Fonte: <a href="http://www.prograd.ufc.br/perguntas-frequentes/384-perguntas-frequentes-ira">página da PROGRAD UFC</a>
     </div>
     <div class="pull-right div-botoes">
         <button type="button" name="button" class="btn btn-success" ng-click="addDisciplina(disciplina)">Adicionar</button>

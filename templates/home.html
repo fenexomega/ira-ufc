@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="alert alert-info">
-      <b>Aviso:</b> as disciplinas que foram reprovadas por falta devem ter nota ZERO. Fonte: <a href="http://www.prograd.ufc.br/perguntas-frequentes/384-perguntas-frequentes-ira">página da PROGRAD UFC</a>
+      <b>Aviso:</b> as disciplinas que foram reprovadas por <b>falta</b> devem ter nota <em>zero</em>. Fonte: <a href="http://www.prograd.ufc.br/perguntas-frequentes/384-perguntas-frequentes-ira">página da PROGRAD UFC</a>
     </div>
     <div class="pull-right div-botoes">
         <button type="button" name="button" class="btn btn-success" ng-click="addDisciplina(disciplina)">Adicionar</button>
@@ -62,11 +62,11 @@
         <tbody>
           <tr ng-repeat="x in semestre.disciplinas">
             <div class="form-group">
-              <td><input type="text" name="" class="form-control"  ng-model="x.nome" ></td>
-              <td><input type="text" name="" class="form-control"  ng-model="x.carga"  ></td>
-              <td><input type="text" name="" class="form-control"  ng-model="x.nota" ng-disabled="x.trancada"></td>
-              <td><input type="checkbox" name="" class="form-check-input"  ng-model="x.trancada" ng-model="$index"></td>
-              <td><button type="button" name="button" class="btn btn-danger" ng-click="removerDisciplina(semestre,x)">Apagar</button></td>
+              <td class="col-md-6"><input type="text" name="" class="form-control"  ng-model="x.nome" ></td>
+              <td class="col-md-1"><input type="text" name="" class="form-control"  ng-model="x.carga"  ></td>
+              <td class="col-md-1"><input type="text" name="" class="form-control"  ng-model="x.nota" ng-disabled="x.trancada"></td>
+              <td class="col-md-1"><input type="checkbox" name="" class="form-check-input"  ng-model="x.trancada" ng-model="$index"></td>
+              <td class="col-md-1"><button type="button" name="button" class="btn btn-danger" ng-click="removerDisciplina(semestre,x)">Apagar</button></td>
             </div>
           </tr>
         </tbody>

@@ -5,7 +5,6 @@
 
   function IraController($scope,IraService)
   {
-
     $scope.disciplina = {carga: 64,nota: 7.0,semestre: 1};
     $scope.dados = IraService.getDados();
     $scope.ira = calcIra($scope.dados);
@@ -15,9 +14,10 @@
       $scope.ira = calcIra($scope.dados);
 
       // Caso não tenha sincronizado ainda, limpe o timeout
-      if(timeoutRef == undefined)
+      if(timeoutRef !== undefined)
         clearTimeout(timeoutRef);
-        timeoutRef = setTimeout(function(){
+
+      timeoutRef = setTimeout(function(){
           IraService.sincronizarDados($scope.dados)
         },3000);
     },true);
@@ -25,11 +25,10 @@
 
     function acharSemestreOuCriar(periodo)
     {
-      for (semestre of $scope.dados.semestres) {
+      for (var semestre of $scope.dados.semestres) {
         if(semestre.periodo == periodo)
         return semestre;
       }
-
       var semestre = {"periodo": periodo, "disciplinas": [] };
       $scope.dados.semestres.push(semestre)
       return semestre;
@@ -74,7 +73,6 @@
           total += d.carga
         }
       }
-
       return total
     }
 
@@ -91,7 +89,6 @@
         C  = calCargaTotal(obj,semestre.periodo); //carga total
         for(var d of semestre.disciplinas)
         {
-
           if(d.trancada == true)
           {
             CT += d.carga;

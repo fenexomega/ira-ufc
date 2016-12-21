@@ -60,7 +60,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="x in semestre.disciplinas">
+          <tr ng-repeat="x in semestre.disciplinas track by $index">
             <div class="form-group">
               <td class="col-md-6"><input type="text" name="" class="form-control"  ng-model="x.nome" ></td>
               <td class="col-md-1"><input type="text" name="" class="form-control"  ng-model="x.carga"  ></td>
